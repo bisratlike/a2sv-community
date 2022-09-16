@@ -1,0 +1,18 @@
+class Solution:
+    
+    def selectionSort(self, arr,n):
+            
+            
+            
+        for i in range(n-1):
+            minmum = i
+            for j  in range(i+1,n):
+                
+                if arr[minmum] > arr[j]:
+                    
+                    minmum=j
+            if minmum !=i:
+                
+                arr[i],arr[minmum] =arr[minmum] ,arr[i]
+        return arr
+            
