@@ -1,0 +1,11 @@
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        answer=[]
+        for j in range(0,len(nums)-1):
+            for k in range(j+1 ,  len(nums)):
+                
+                if nums[j] == nums[k]:
+                    answer.append([j,k])
+                    
+            
+     
