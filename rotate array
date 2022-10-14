@@ -1,0 +1,4 @@
+ for i in range(k):
+            num= nums.pop()
+            nums.insert(0,num)
+            
