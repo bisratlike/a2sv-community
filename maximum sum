@@ -1,0 +1,20 @@
+class Solution:
+    def maxSumTwoNoOverlap(self, A: List[int], L: int, M: int) -> int:
+
+      nums = A[:] # We don't really need to deepcopy here, we can use A instead of nums.
+              for i in range(1,len(A)):
+                  nums[i]+=nums[i-1] # nums value at index i is the total sum from beginning to index i
+              # initializing the variables
+              lmax, mmax,res = 0,0,0
+              nums.insert(0,0) # adding a dummy 0 value at the beginning of the list to make boundary coding simpler
+              # L before M. We keep on moving the M sized window and for each position check the max sum valued L window till now and update the total value for each move
+              for i in range(L+1, len(nums)-M+1): # check the boundaries by drawing array diag on paper with some example
+                  msum = nums[i+M-1] - nums[i-1]
+                  lmax = max(lmax, nums[i-1]-nums[i-1-L])
+                  res = max(res,msum+lmax)
+              # M before L. We keep on moving L sized window at each step and calculate the max sum val of M sized windows lying before it.and update the total value for each move
+              for i in range(M+1, len(nums)-L+1): # check the boundaries by drawing array diag on paper with some example
+                  lsum = nums[i+L-1] - nums[i-1]
+                  mmax = max(mmax, nums[i-1]-nums[i-1-M])
+                  res = max(res,lsum+mmax)
+              return res
