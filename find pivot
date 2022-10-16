@@ -1,0 +1,15 @@
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+     
+        sumright=sum(nums)
+        sumleft=0
+        
+        for i in range(len(nums)):
+            sumright-=nums[i]
+                
+            if sumright==sumleft:
+                return i 
+            sumleft+=nums[i]
+            
+        return -1
+   
